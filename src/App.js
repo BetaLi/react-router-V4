@@ -14,11 +14,6 @@ render(){
         return (
             <div>
                 <h2>This is Home Page.</h2>
-                <ul>
-                    <li><Link to={'/'}>Home</Link></li>
-                    <li><Link to={'/about'}>About</Link></li>
-                    <li><Link to={'/index'}>Index</Link></li>
-                </ul>
             </div>
         )
     };
@@ -29,16 +24,36 @@ render(){
             </div>
         )
     };
-    const Index = function () {
+    const Topic = function ({match}) {
         return (
             <div>
-                <h2>This is Index Page.</h2>
+            <h3>{match.params.topicID}</h3>
+            </div>
+        )
+    };
+    const Index = function ({match}) {
+        return (
+            <div>
+                <ul>
+                    <li><Link to={`${match.url}/Rendering`}>Rendering by react.</Link></li>
+                    <li><Link to={`${match.url}/Component`}>Component by react.</Link></li>
+                    <li><Link to={`${match.url}/Props.V`}>Props .V by react.</Link></li>
+                </ul>
+                <hr/>
+                <Route path={`${match.url}/:topicID`} component={Topic}/>
+                <Route exact path={match.url} render={() => (<h3>请选择一个主题。</h3>)}/>
             </div>
         )
     };
     return (
         <Router>
             <div>
+                <ul>
+                    <li><Link to={'/'}>Home</Link></li>
+                    <li><Link to={'/about'}>About</Link></li>
+                    <li><Link to={'/index'}>Index</Link></li>
+                </ul>
+                <hr/>
                 <Route exact path={'/'} component={Home}/>
                 <Route path={'/about'} component={About}/>
                 <Route path={'/index'} component={Index}/>
