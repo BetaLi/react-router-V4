@@ -9,58 +9,85 @@ import {
 
 class App extends Component {
 
-render(){
-    const Home = function(){
+    render(){
+        const Admin=function ({match}) {
+            return (
+                <div>
+                    <h3>ID:{match.params.id}</h3>
+                </div>
+            )
+        };
         return (
-            <div>
-                <h2>This is Home Page.</h2>
-            </div>
-        )
-    };
-    const About = function () {
-        return (
-            <div>
-                <h2>This is About Page.</h2>
-            </div>
-        )
-    };
-    const Topic = function ({match}) {
-        return (
-            <div>
-            <h3>{match.params.topicID}</h3>
-            </div>
-        )
-    };
-    const Index = function ({match}) {
-        return (
-            <div>
+            <Router>
+                <div>
+                <h1>账号</h1>
                 <ul>
-                    <li><Link to={`${match.url}/Rendering`}>Rendering by react.</Link></li>
-                    <li><Link to={`${match.url}/Component`}>Component by react.</Link></li>
-                    <li><Link to={`${match.url}/Props.V`}>Props .V by react.</Link></li>
+                    <li><Link to={`/flash`}>Flash</Link></li>
+                    <li><Link to={`/arrow`}>Arrow</Link></li>
+                    <li><Link to={`/supergirl`}>SuperGirl</Link></li>
                 </ul>
-                <hr/>
-                <Route path={`${match.url}/:topicID`} component={Topic}/>
-                <Route exact path={match.url} render={() => (<h3>请选择一个主题。</h3>)}/>
-            </div>
+                <Route path={`/:id`} component={Admin}/>
+                </div>
+            </Router>
         )
-    };
-    return (
-        <Router>
-            <div>
-                <ul>
-                    <li><Link to={'/'}>Home</Link></li>
-                    <li><Link to={'/about'}>About</Link></li>
-                    <li><Link to={'/index'}>Index</Link></li>
-                </ul>
-                <hr/>
-                <Route exact path={'/'} component={Home}/>
-                <Route path={'/about'} component={About}/>
-                <Route path={'/index'} component={Index}/>
-            </div>
-        </Router>
-    )
-}
+    }
+
+
+
+
+
+// render(){
+//     const Home = function(){
+//         return (
+//             <div>
+//                 <h2>This is Home Page.</h2>
+//             </div>
+//         )
+//     };
+//     const About = function () {
+//         return (
+//             <div>
+//                 <h2>This is About Page.</h2>
+//             </div>
+//         )
+//     };
+//     const Topic = function ({match}) {
+//         return (
+//             <div>
+//             <h3>{match.params.topicID}</h3>
+//             </div>
+//         )
+//     };
+//     const Index = function ({match}) {
+//         return (
+//             <div>
+//                 <ul>
+//                     <li><Link to={`${match.url}/Rendering`}>Rendering by react.</Link></li>
+//                     <li><Link to={`${match.url}/Component`}>Component by react.</Link></li>
+//                     <li><Link to={`${match.url}/Props.V`}>Props .V by react.</Link></li>
+//                 </ul>
+//                 <hr/>
+//                 <Route path={`${match.url}/:topicID`} component={Topic}/>
+//                 <Route exact path={match.url} render={() => (<h3>请选择一个主题。</h3>)}/>
+//             </div>
+//         )
+//     };
+//     return (
+//         <Router>
+//             <div>
+//                 <ul>
+//                     <li><Link to={'/'}>Home</Link></li>
+//                     <li><Link to={'/about'}>About</Link></li>
+//                     <li><Link to={'/index'}>Index</Link></li>
+//                 </ul>
+//                 <hr/>
+//                 <Route exact path={'/'} component={Home}/>
+//                 <Route path={'/about'} component={About}/>
+//                 <Route path={'/index'} component={Index}/>
+//             </div>
+//         </Router>
+//     )
+// }
 
 
 
